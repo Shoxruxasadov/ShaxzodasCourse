@@ -1,20 +1,20 @@
 'use client'
 
-import Image from "next/image";
+import { UseRouter } from "next/navigation";
+import { UseForm } from "react-hook-form";
 import Link from "next/link";
+import axios from "axios";
+
+import UseLocalStorage from "@/hooks/useLocalStorage";
+import { success, wrong } from "@/utility/toastify";
 import AuthLayout from "@/layout/auth";
 
-import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
-import useLocalStorage from "@/hooks/useLocalStorage";
-import axios from "axios";
-import { success, wrong } from "@/utility/toastify";
 
 export default function page() {
   const exceptThisSymbols = ["e", "E", "+", "-", "."];
-  const [token, setToken] = useLocalStorage('token', '')
-  const { register, handleSubmit } = useForm()
-  const router = useRouter()
+  const [token, setToken] = UseLocalStorage('token', '')
+  const { register, handleSubmit } = UseForm()
+  const router = UseRouter()
 
   const onSubmit = (data) => {
     const url = `${process.env.NEXT_PUBLIC_SERVER_API}/users`
