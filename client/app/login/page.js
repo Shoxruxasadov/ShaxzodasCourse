@@ -62,8 +62,8 @@ export default function page() {
         </div>
         <div className="footer">
           <p>
-            <span>Akkount yo'qmi? </span>
-            <Link href='/signup'>Ro'yxatdan o'tish</Link>
+            <span>Akkount yo&#39;qmi? </span>
+            <Link href='/signup'>Ro&#39;yxatdan o&#39;tish</Link>
           </p>
         </div>
       </div>
