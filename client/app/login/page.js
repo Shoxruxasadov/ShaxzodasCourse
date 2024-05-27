@@ -1,7 +1,7 @@
 'use client'
 
-import { UseRouter } from "next/navigation";
-import { UseForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
 import Link from "next/link";
 import axios from "axios";
 
@@ -13,8 +13,8 @@ import AuthLayout from "@/layout/auth";
 export default function page() {
   const exceptThisSymbols = ["e", "E", "+", "-", "."];
   const [token, setToken] = UseLocalStorage('token', '')
-  const { register, handleSubmit } = UseForm()
-  const router = UseRouter()
+  const { register, handleSubmit } = useForm()
+  const router = useRouter()
 
   const onSubmit = (data) => {
     const url = `${process.env.NEXT_PUBLIC_SERVER_API}/users`
