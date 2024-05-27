@@ -29,7 +29,7 @@ export default function Dashboard() {
                     <img src='/unknown.png' />
                     <div className="title">
                         <h1>{user.name} {user.family}</h1>
-                        <h3>{user.phone} {user.status ? <span className='active'>To'langan</span> : <span className='activation'>To'lanmagan</span>}</h3>
+                        <h3>{user.phone} {user.status ? <span className='active'>To&#39;langan</span> : <span className='activation'>To&#39;lanmagan</span>}</h3>
                     </div>
                 </div>
             </div>

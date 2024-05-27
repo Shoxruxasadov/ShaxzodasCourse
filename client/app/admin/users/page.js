@@ -70,8 +70,8 @@ export default function AdminUsers() {
                             <td>{item.phone}</td>
                             <td><span className={`pag ${item.role}`}>{item.role}</span></td>
                             <td>{item.status ?
-                                <span onClick={() => unpaid(item._id)} className="pag active">To'langan</span> :
-                                <span onClick={() => paid(item._id)} className="pag activation">To'lanmagan</span>
+                                <span onClick={() => unpaid(item._id)} className="pag active">To&#39;langan</span> :
+                                <span onClick={() => paid(item._id)} className="pag activation">To&#39;lanmagan</span>
                             }</td>
                         </tr>
                     ))}

@@ -37,7 +37,7 @@ export default function page() {
       <div className="box">
         <div className="header">
           <h1>Kirish</h1>
-          <p>"Shaxzoda's Online Course" da o'qishni davom ettirish uchun</p>
+          <p>&#34;Shaxzoda&#39;s Online Course&#34; da o&#39;qishni davom ettirish uchun</p>
         </div>
         <div className="main">
           <form onSubmit={handleSubmit(onSubmit)}>

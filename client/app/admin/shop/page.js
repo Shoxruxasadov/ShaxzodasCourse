@@ -161,13 +161,13 @@ export default function AdminShop() {
                                 </div>
                             </div>
                             <div className="title">
-                                <h1>Darslik qo'shish</h1>
+                                <h1>Darslik qo&#39;shish</h1>
                             </div>
                         </div>
                     </>}
                 </div>
                 <Rodal visible={rodal} onClose={rodalClose}>
-                    <h3>shop bo'limiga darslik qo'shish</h3>
+                    <h3>Online Shop bo&#39;limiga darslik qo&#39;shish</h3>
                     <form className="rodal-wrapper" onSubmit={handleSubmit(onSubmit)}>
                         <label className="lesson" htmlFor="fileVideo">
                             <p>1. Bu yerdan Videoni yuklang</p>

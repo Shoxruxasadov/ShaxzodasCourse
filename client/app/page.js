@@ -12,7 +12,7 @@ export default function Home() {
           Cheteldan arzon mahsulotlarni buyurtma qilish,
           uydan turib onlayn shop yuritish,
           Instagram orqali daromad,
-          instagram rivojlantirish bo'yicha tajribaga ega kuratorman.
+          instagram rivojlantirish bo&#39;yicha tajribaga ega kuratorman.
         </p>
         <Link href="https://t.me/shahzodas_administrator" target="_blank">Murojat uchun</Link>
       </div>
