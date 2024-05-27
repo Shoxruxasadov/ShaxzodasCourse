@@ -1,4 +1,4 @@
-// 'use client'
+'use client'
 
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -9,7 +9,7 @@ import UseLocalStorage from "@/hooks/useLocalStorage";
 import { success, wrong } from "@/utility/toastify";
 import AuthLayout from "@/layout/auth";
 
-export default function page() {
+export default function SignUpPage() {
     const exceptThisSymbols = ["e", "E", "+", "-", "."];
     const [token, setToken] = UseLocalStorage('token', '')
     const { register, handleSubmit } = useForm()
