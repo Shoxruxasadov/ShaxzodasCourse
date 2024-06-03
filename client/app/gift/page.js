@@ -20,27 +20,10 @@ export default function Gift() {
   }, [])
 
   return (
-    <HomeLayout name='course'>
+    <HomeLayout name='gift'>
       <div className="wrapper">
-        {isLoading ? <>
-          <span className="loader"></span>
-          <span className="loader"></span>
-        </> : <>
-          {gift.map((item, i) => (
-            <Link href={`/gift/${item._id}`} className="card" key={item._id}>
-              <div className="image">
-                <img
-                  src={item.photo}
-                  alt={item._id}
-                />
-              </div>
-              <div className="title">
-                <h1>{item.title}</h1>
-                <p>{item.description}</p>
-              </div>
-            </Link>
-          ))}
-        </>}
+        <h3>Bizndes kurator Shaxzoda Turdimurodova shaxsan oʻzlari bilan zoom platformasida online uchrashov🤩</h3>
+        <p>Yani bu uchrashuvda sizni qiziqtirgan savollariz, muammolariz, dars davomida instruktor tomonida qoniqtirmagan javoblarizga ham yechim topasiz✅</p>
       </div>
     </HomeLayout>
   )

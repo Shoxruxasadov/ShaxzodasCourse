@@ -22,6 +22,7 @@
   --analog-color: #e6ddd9;
   --hover-color: #d1ccca;
   --border-color: #cec2bd;
+  --plyr-color-main: #ff0095;
 }
 
 body {
@@ -55,6 +56,15 @@ main {
         font-weight: 600;
         font-size: 28px;
       }
+
+      button {
+        display: none;
+        margin-left: 10px;
+      }
+    }
+
+    button.burgerMenu {
+      display: none;
     }
 
     .auth {
@@ -129,17 +139,187 @@ main {
         }
       }
     }
+
+    .rodal {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      width: 100vw;
+      height: 100vh;
+      animation-duration: 250ms !important;
+      backdrop-filter: blur(2px);
+      background: rgba(0, 0, 0, 0.3);
+
+      .rodal-zoom-enter {
+        animation: rodal-slideLeft-enter !important;
+      }
+
+      .rodal-zoom-leave {
+        animation: rodal-slideLeft-leave !important;
+      }
+
+      .rodal-close {
+        display: none;
+      }
+
+      .rodal-dialog {
+        width: 300px !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: var(--background-color);
+        position: relative;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        animation-duration: 250ms !important;
+        box-shadow: 0 0 20px #00000050;
+
+        #header {
+          width: 100%;
+          transition: all 0.5s;
+          padding: 0 15px;
+
+          .profile {
+            img {
+              margin: 15px auto;
+              display: block;
+              width: 100px;
+              border: 7px solid var(--border-color);
+              border-radius: 50%;
+            }
+            h1 {
+              font-size: 20px;
+              margin: 0;
+              padding: 0;
+              font-weight: 600;
+              -moz-text-align-last: center;
+              text-align-last: center;
+              font-family: "Poppins", sans-serif;
+
+              a {
+                text-decoration: none;
+              }
+            }
+          }
+
+          .nav-menu {
+            padding: 30px 0 0 0;
+          }
+
+          .nav-menu * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+          }
+
+          .nav-menu > ul > a {
+            position: relative;
+            white-space: nowrap;
+            font-size: 18px;
+
+            .title {
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+              margin-left: 10px;
+            }
+          }
+
+          .nav-menu a,
+          .nav-menu a:focus {
+            display: flex;
+            align-items: center;
+            color: #7c7c8b;
+            padding: 12px 20px;
+            margin-bottom: 8px;
+            transition: 0.3s;
+            font-size: 21px;
+            cursor: pointer;
+
+            svg,
+            .title {
+              cursor: pointer;
+            }
+          }
+
+          .nav-menu a i,
+          .nav-menu a:focus i {
+            font-size: 24px;
+            padding-right: 8px;
+            color: #51525e;
+          }
+
+          .nav-menu a:hover,
+          .nav-menu .active,
+          .nav-menu .active:focus,
+          .nav-menu li:hover > a {
+            text-decoration: none;
+            color: black;
+            font-weight: 600;
+          }
+
+          .nav-menu a:hover i,
+          .nav-menu .active i,
+          .nav-menu .active:focus i,
+          .nav-menu li:hover > a i {
+            color: #149ddd;
+          }
+        }
+
+        .mobile-nav-toggle {
+          position: fixed;
+          right: 15px;
+          top: 15px;
+          z-index: 9998;
+          border: 0;
+          font-size: 24px;
+          transition: all 0.4s;
+          outline: none !important;
+          background-color: #149ddd;
+          color: #fff;
+          width: 40px;
+          height: 40px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          line-height: 0;
+          border-radius: 50px;
+          cursor: pointer;
+        }
+
+        .mobile-nav-active {
+          overflow: hidden;
+        }
+
+        .mobile-nav-active #header {
+          left: 0;
+        }
+      }
+    }
   }
 
   &#auth header {
     background: #f3f3f6;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 440px) {
     &#admin header,
     &#home header {
+      padding: 0 2px 0 10px;
+
       a.logo {
-        display: none;
+        padding: 10px;
+
+        p {
+          display: none;
+        }
+      }
+
+      div.auth {
+        .price {
+          display: none;
+        }
       }
       button {
         display: block;
@@ -159,7 +339,7 @@ main nav {
   flex-direction: column;
   justify-content: space-between;
 
-  @media (max-width: 400px) {
+  @media (max-width: 440px) {
     display: none;
   }
 
@@ -250,7 +430,7 @@ main#home section {
   background-repeat: no-repeat;
   background-size: cover;
 
-  @media (max-width: 400px) {
+  @media (max-width: 440px) {
     margin: 70px 0 0 0;
   }
 
@@ -263,14 +443,32 @@ main#home section {
     justify-content: space-between;
     flex-wrap: nowrap;
 
+    @media (max-width: 440px) {
+      height: auto;
+      flex-direction: column;
+    }
+
     .title {
       max-width: 50%;
       min-height: 500px;
       padding-left: 40px;
 
+      @media (max-width: 440px) {
+        width: 100%;
+        height: auto;
+        max-width: none;
+        min-height: auto;
+        padding: 0;
+        margin-bottom: 40px;
+      }
+
       h3 {
         font-size: 19px;
         font-weight: 700;
+
+        @media (max-width: 440px) {
+          text-align: center;
+        }
       }
 
       h1 {
@@ -279,6 +477,10 @@ main#home section {
         line-height: 50px;
         font-weight: 700;
         margin-bottom: 10px;
+
+        @media (max-width: 440px) {
+          text-align: center;
+        }
       }
 
       h2 {
@@ -286,12 +488,20 @@ main#home section {
         line-height: 80px;
         font-weight: 700;
         margin-bottom: 10px;
+
+        @media (max-width: 440px) {
+          text-align: center;
+        }
       }
 
       p {
         font-size: 18px;
         text-shadow: 0 0 10px #0003;
         margin: 20px 0 10px 0;
+
+        @media (max-width: 440px) {
+          text-align: center;
+        }
       }
 
       a {
@@ -307,6 +517,11 @@ main#home section {
         margin-top: 20px;
         line-height: 52px;
         text-align: center;
+
+        @media (max-width: 440px) {
+          display: block;
+          margin: 20px auto 0;
+        }
       }
     }
 
@@ -316,6 +531,11 @@ main#home section {
       display: flex;
       justify-content: center;
       position: relative;
+
+      @media (max-width: 440px) {
+        width: 100%;
+        height: auto;
+      }
 
       .woman {
         height: 100%;
@@ -339,7 +559,7 @@ main#home section {
       overflow: hidden;
       cursor: pointer;
 
-      @media (max-width: 400px) {
+      @media (max-width: 440px) {
         width: 100%;
 
         .image {
@@ -435,6 +655,27 @@ main#home section {
     }
   }
 
+  &#gift {
+    .wrapper {
+      width: 100%;
+      height: calc(100svh - 200px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      h3{
+        font-size: 24px;
+        text-align: center;
+      }
+
+      p{
+        font-size: 18px;
+        text-align: center;
+      }
+    }
+  }
+
   &#profile {
     width: 100%;
     height: calc(100vh - 70px);
@@ -487,6 +728,16 @@ main#home section {
       justify-content: end;
       padding: 0 40px;
       gap: 10px;
+
+      @media (max-width: 440px) {
+        justify-content: center;
+      }
+
+      .right {
+        @media (max-width: 440px) {
+          display: flex;
+        }
+      }
 
       a {
         display: inline-block;
@@ -541,6 +792,12 @@ main#home section {
         align-items: end;
         gap: 16px;
 
+        @media (max-width: 440px) {
+          align-items: center;
+          flex-direction: column;
+          padding: 0 10px;
+        }
+
         img {
           height: 100%;
           border-radius: 50%;
@@ -553,6 +810,11 @@ main#home section {
           h1 {
             font-size: 38px;
             font-weight: 600;
+
+            @media (max-width: 440px) {
+              text-align: center;
+              font-size: 32px;
+            }
           }
 
           h3 {
@@ -561,6 +823,10 @@ main#home section {
             display: flex;
             align-items: center;
             gap: 12px;
+
+            @media (max-width: 440px) {
+              justify-content: center;
+            }
 
             span {
               padding: 4px 12px;
@@ -583,8 +849,7 @@ main#home section {
     }
   }
 
-  &#lessons{
-    
+  &#lessons {
   }
 }
 
@@ -756,7 +1021,7 @@ main#admin section {
   background-repeat: no-repeat;
   background-size: cover;
 
-  @media (max-width: 400px) {
+  @media (max-width: 440px) {
     margin: 70px 0 0 0;
   }
 
@@ -898,7 +1163,7 @@ main#admin section {
         cursor: pointer;
         position: relative;
 
-        @media (max-width: 400px) {
+        @media (max-width: 440px) {
           width: 100%;
 
           .image {
@@ -963,11 +1228,11 @@ main#admin section {
           }
         }
 
-        &:hover .delete{
+        &:hover .delete {
           opacity: 1;
         }
 
-        .delete{
+        .delete {
           position: absolute;
           top: 0;
           right: 0;
@@ -978,7 +1243,7 @@ main#admin section {
           color: white;
           box-shadow: 0 0 10px #00000063;
           opacity: 0;
-          transition: .2s;
+          transition: 0.2s;
         }
       }
 
@@ -1020,7 +1285,7 @@ main#admin section {
       bottom: auto;
       top: 50%;
 
-      @media (max-width: 400px) {
+      @media (max-width: 440px) {
         width: 360px !important;
       }
 
@@ -1161,7 +1426,7 @@ main#loading {
   }
 }
 
-div#admin-loading{
+div#admin-loading {
   width: 100%;
   height: 100svh;
   display: flex;

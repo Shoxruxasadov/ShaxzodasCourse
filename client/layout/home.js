@@ -2,7 +2,7 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
@@ -13,9 +13,11 @@ import { wrong } from "@/utility/toastify";
 import Root from "@/app/root";
 
 import { TbSmartHome, TbSocial, TbBrandShopee, TbBrandInstagram, TbBasket, TbGift } from "react-icons/tb";
+import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import { PiArrowFatLinesUp } from "react-icons/pi";
 import { TiBusinessCard } from "react-icons/ti";
 import { BiLike, BiBox } from "react-icons/bi";
+import Rodal from 'rodal'
 
 export default function HomeLayout({ children, name }) {
     const user = useStore(state => state.user);
@@ -24,6 +26,7 @@ export default function HomeLayout({ children, name }) {
     const setLoading = useStore(state => state.setLoading);
     const setAdmin = useStore(state => state.setAdmin);
     const [token, setToken] = useLocalStorage("token", '')
+    const [state, setState] = useState(false)
     const pathname = usePathname()
 
     const links = [
@@ -95,6 +98,7 @@ export default function HomeLayout({ children, name }) {
                         />
                         <p>Course</p>
                     </Link>
+                    <button onClick={() => setState(!state)} className="burgerMenu"><HiOutlineMenuAlt2 /></button>
                     <div className="auth">
                         <Link href="https://t.me/shahzodas_administrator" target="_blank" className="price"><TiBusinessCard /></Link>
                         {user ? <Link className="user" href='/dashboard'>
@@ -107,6 +111,32 @@ export default function HomeLayout({ children, name }) {
                             </div>
                         </Link> : <Link href='/login' className="login">Kirish</Link>}
                     </div>
+                    <Rodal visible={state} onClose={() => setState(false)}>
+                        <div id="header">
+                            <div className="profile">
+                                <Image
+                                    src="/favicon.ico"
+                                    className="img-fluid rounded-circle"
+                                    alt="logo"
+                                    width={60}
+                                    height={60}
+                                />
+                                <h1 className="text-light">
+                                    <Link href="/">Shaxzodas Course</Link>
+                                </h1>
+                            </div>
+                            <div id="nav" className="nav-menu navbar">
+                                <ul>
+                                    {links.map((link, i) => (
+                                        <Link key={i} href={link.path} className={pathname == link.path ? "active" : ""} onClick={() => setState(false)}>
+                                            <div className="icon">{link.icon}</div>
+                                            <span className="title">{link.title}</span>
+                                        </Link>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </Rodal>
                 </header>
                 <nav>
                     <div className="lists">

@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import ReactPlayer from "react-player";
 import Link from 'next/link';
 import axios from 'axios'
+import Plyr from 'plyr';
 import LessonLayout from '@/layout/lesson';
 
 export default function TargetSlug({ params }) {
@@ -12,6 +13,7 @@ export default function TargetSlug({ params }) {
     const [player, setPlayer] = useState({})
     const [links, setLinks] = useState([])
     const pathname = usePathname()
+    const plyr = new Plyr('#plyr');
 
     useEffect(() => {
         axios.get(`${process.env.NEXT_PUBLIC_SERVER_API}/course/${params.slug}`, { headers: { 'secret': process.env.NEXT_PUBLIC_SECRET } }).then(({ data }) => {
@@ -41,12 +43,10 @@ export default function TargetSlug({ params }) {
             <section id='lessons'>
                 <div className="player">
                     <div className="video">
-                        <ReactPlayer
-                            url={player.video}
-                            controls={true}
-                            light={false}
-                            pip={true}
-                        />
+                        <video id="plyr" playsinline controls data-poster={player.photo}>
+                            <source src={player.video} type="video/mp4" />
+                            {/* <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default /> */}
+                        </video>
                     </div>
                     <div className="title">
                         <p>{player.description}</p>

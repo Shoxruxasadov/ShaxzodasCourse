@@ -1,6 +1,7 @@
 import "@/style/global.scss";
 import 'rodal/lib/rodal.css';
 import 'aos/dist/aos.css';
+import 'plyr/dist/plyr.css';
 
 export const metadata = {
   title: "Shaxzoda's Online Course",
