@@ -22,7 +22,7 @@ export default function Gift() {
   return (
     <HomeLayout name='gift'>
       <div className="wrapper">
-        <h3>Bizndes kurator Shaxzoda Turdimurodova shaxsan oʻzlari bilan zoom platformasida online uchrashov🤩</h3>
+        <h3>Biznes kurator Shaxzoda Turdimurodova shaxsan oʻzlari bilan zoom platformasida online uchrashov🤩</h3>
         <p>Yani bu uchrashuvda sizni qiziqtirgan savollariz, muammolariz, dars davomida instruktor tomonida qoniqtirmagan javoblarizga ham yechim topasiz✅</p>
       </div>
     </HomeLayout>
